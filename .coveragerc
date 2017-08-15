@@ -1,0 +1,3 @@
+[run]
+source = zachat
+omit = zachat/test*
