@@ -12,7 +12,7 @@ def my_view(request):
         wechat_init()
     return {'bot': bot}
 
-@view_config(route_name='send', request_method='GET', renderer='templates/mytemplate.jinja2')
+@view_config(route_name='send',  renderer='templates/mytemplate.jinja2')
 def send_message(request):
     we_err = 0
     we_msg = ''
