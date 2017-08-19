@@ -17,7 +17,7 @@ def send_message(request):
     we_err = 0
     we_msg = ''
     bot = wxpy.bot
-    print bot.alive
+    print(bot.alive)
     if bot == None or not bot.alive:
         wechat_init()
     group = request.params.get('group')
