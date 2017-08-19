@@ -7,14 +7,7 @@
  <div id=we-status>
 {% if bot.alive %}
     微信在线
-{% else %}
-    微信已经离线
-	<div id=qr>
-		<img src = "{{request.static_url('zachat:static/wechat/qr.png')}}" />
-	</div>
-{% endif %}
-</div>
-<div>
+ <div>
 <form action=/send>
 <select id=groups name='group'>
 {% for group in bot.groups() %}
@@ -24,6 +17,13 @@
 <textarea name='message'></textarea>
 <input type='submit' value="Send" />
 </form>
+</div>
+{% else %}
+    微信已经离线
+	<div id=qr>
+		<img src = "{{request.static_url('zachat:static/wechat/qr.png')}}" />
+	</div>
+{% endif %}
 </div>
 </body>
 </html>

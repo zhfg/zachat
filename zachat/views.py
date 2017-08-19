@@ -7,7 +7,10 @@ from .wechat import wechat_init
 #curl 127.0.0.1:6543/send/zabbix微信报警测试/测试消息
 @view_config(route_name='home', renderer='templates/home.jinja2')
 def my_view(request):
-    return {'bot': wxpy.bot}
+    bot = wxpy.bot
+    if bot == None or not bot.alive:
+        wechat_init()
+    return {'bot': bot}
 
 @view_config(route_name='send', request_method='GET', renderer='templates/mytemplate.jinja2')
 def send_message(request):
@@ -15,7 +18,7 @@ def send_message(request):
     we_msg = ''
     bot = wxpy.bot
     print bot.alive
-    if not bot.alive:
+    if bot == None or not bot.alive:
         wechat_init()
     group = request.params.get('group')
     msg = request.params.get('message')

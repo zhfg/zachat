@@ -3,14 +3,16 @@
 
 import wxpy
 import os, threading
-file_dir = os.path.basename(__file__)
-qr_dir = os.path.join(file_dir, "../static/wechat/")
+file_dir = os.path.dirname(__file__)
+qr_dir = os.path.join(file_dir, "../static/wechat/qr.png")
+wxpy.bot = None
 def wechat_init(event=None):
     print(event)
     thread = threading.Thread(target=wechat_login, name="wehcat_login")
     thread.start()
 
 def wechat_login():
+    print(qr_dir)
     wxpy.bot = wxpy.Bot(cache_path=True,qr_path=qr_dir, console_qr=-2)
 
     @wxpy.bot.register(msg_types=wxpy.FRIENDS)
