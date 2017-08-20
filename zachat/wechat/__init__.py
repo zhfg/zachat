@@ -14,6 +14,17 @@ def wechat_init(event=None):
 def wechat_login():
     print(qr_dir)
     wxpy.bot = wxpy.Bot(cache_path=True,qr_path=qr_dir, console_qr=-2)
+    def keepalive():
+        if not wxpy.bot.alive:
+            print("wechat is offline, re loging......")
+            wxpy.bot = wxpy.Bot(cache_path=True,qr_path=qr_dir, console_qr=-2)
+        else: 
+            print("wechat is online.")
+
+        timer = threading.Timer(10, keepalive)
+        timer.start()
+    th_keepalve = timer = threading.Timer(1, keepalive)
+    th_keepalve.start()
 
     @wxpy.bot.register(msg_types=wxpy.FRIENDS)
         # 自动接受验证信息中包含 'connext' 的好友请求
