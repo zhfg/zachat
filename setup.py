@@ -16,6 +16,7 @@ requires = [
     'waitress',
     'wechatpy',
     'PyCrypto',
+    'uwsgi',
 ]
 
 tests_require = [
