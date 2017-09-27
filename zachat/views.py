@@ -11,9 +11,9 @@ department = 'Zabbixtest'
 agentID = '1000002'
 
 #curl 127.0.0.1:6543/send/zabbix微信报警测试/测试消息
-@view_config(route_name='home', renderer='templates/home.jinja2')
+@view_config(route_name='home', renderer='json')
 def my_view(request):
-    return {'bot': bot}
+    return {'bot': 'bot'}
 
 @view_config(route_name='send',  renderer='json')
 def send_message(request):
