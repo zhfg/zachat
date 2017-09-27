@@ -14,6 +14,8 @@ requires = [
     'pyramid_jinja2',
     'pyramid_debugtoolbar',
     'waitress',
+    'wechatpy',
+    'PyCrypto',
 ]
 
 tests_require = [
